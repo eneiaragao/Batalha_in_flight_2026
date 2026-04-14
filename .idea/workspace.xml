@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="Adjustments to player.py to rotate the player image; add commands to move forward and backward.&#10;&#10;Create damage logic; class bullet.py; implement background movement and music.">
-      <change afterPath="$PROJECT_DIR$/code/Const.py" afterDir="false" />
+    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="Adjustments to player.py to rotate the player image; add commands to move forward and backward.&#10;&#10;Completing the 3 phases of the game by creating a const.py file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Bullet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Const.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Const.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Level.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Level_Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Level_Config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Score_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Score_Screen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776133267042</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adjustments to player.py to rotate the player image; add commands to move forward and backward.&#10;&#10;Completing the 3 phases of the game by creating a const.py file.">
+      <option name="closed" value="true" />
+      <created>1776179497485</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1776179497485</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,6 +147,7 @@
     <MESSAGE value="Commit initial" />
     <MESSAGE value="Implementation of the Selection_Screen.py logic for player aircraft selection&#10;Insertion of background and enemy images" />
     <MESSAGE value="Adjustments to player.py to rotate the player image; add commands to move forward and backward.&#10;&#10;Create damage logic; class bullet.py; implement background movement and music." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjustments to player.py to rotate the player image; add commands to move forward and backward.&#10;&#10;Create damage logic; class bullet.py; implement background movement and music." />
+    <MESSAGE value="Adjustments to player.py to rotate the player image; add commands to move forward and backward.&#10;&#10;Completing the 3 phases of the game by creating a const.py file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjustments to player.py to rotate the player image; add commands to move forward and backward.&#10;&#10;Completing the 3 phases of the game by creating a const.py file." />
   </component>
 </project>

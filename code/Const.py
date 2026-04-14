@@ -6,6 +6,9 @@ C_BLACK = (0, 0, 0)
 C_WHITE = (255, 255, 255)
 C_GRAY  = (200,200,200)
 
+#E
+# Sons
+EXPLOSION_SOUND = "Som_explosao.mp3" # Verifique se o nome do seu arquivo é esse
 #F
 # Tamanhos de Fonte
 FONT_SCORE_SIZE_DEFAULT = 40
