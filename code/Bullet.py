@@ -35,4 +35,5 @@ class Bullet:
         self.rect.y = self.y  # Atualiza a posição da colisão
 
     def draw(self, window):
-        window.blit(self.sprite, (self.x, self.y))
+        # Mudei de (self.x, self.y) para self.rect
+        window.blit(self.sprite, self.rect)

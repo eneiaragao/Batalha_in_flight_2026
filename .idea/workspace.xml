@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="Commit initial">
+    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="Implementation of the Selection_Screen.py logic for player aircraft selection&#10;Insertion of background and enemy images">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Bullet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Entity.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Entity.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/EntityFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/EntityFactory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Level.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Level.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Level_Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Level_Config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Plane_Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Plane_Config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Selection_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Selection_Screen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775996814009</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implementation of the Selection_Screen.py logic for player aircraft selection&#10;Insertion of background and enemy images">
+      <option name="closed" value="true" />
+      <created>1776126944551</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1776126944551</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +133,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Commit initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit initial" />
+    <MESSAGE value="Implementation of the Selection_Screen.py logic for player aircraft selection&#10;Insertion of background and enemy images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation of the Selection_Screen.py logic for player aircraft selection&#10;Insertion of background and enemy images" />
   </component>
 </project>

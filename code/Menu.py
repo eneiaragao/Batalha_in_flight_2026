@@ -1,3 +1,5 @@
+import os
+
 import pygame
 from Button import Button
 from Game_State import GameState
@@ -5,6 +7,15 @@ from Game_State import GameState
 class Menu:
     def __init__(self, window):
         self.window = window
+        # Carregar fundo do menu
+        path_bg = os.path.join(os.path.dirname(__file__), "..", "asset", "Background.png")
+        self.menu_bg = pygame.image.load(path_bg).convert()
+        self.menu_bg = pygame.transform.scale(self.menu_bg, (1240, 650))
+
+        # Tocar música do menu
+        path_music = os.path.join(os.path.dirname(__file__), "..", "asset", "Menu.mp3")
+        pygame.mixer.music.load(path_music)
+        pygame.mixer.music.play(-1)
 
         self.buttons = [
             Button("Player 1", 300, 150, 200, 50),
@@ -39,7 +50,11 @@ class Menu:
         return GameState.MENU
 
     def draw(self):
-        self.window.fill((30, 30, 30))
+        # Primeiro desenha a imagem de fundo carregada no __init__
+        self.window.blit(self.menu_bg, (0, 0))
+
+        # Remova ou comente o window.fill para não cobrir o fundo
+        # self.window.fill((30, 30, 30))
 
         title = self.title_font.render("AIR COMBAT", True, (255, 255, 255))
         self.window.blit(title, (250, 50))

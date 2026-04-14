@@ -23,6 +23,9 @@ class Enemy(Entity):
         self.bullets = []
     def move(self):
         self.y += self.speed
+        #  Sincroniza o retângulo com a imagem
+        self.rect.y = self.y
+        self.rect.x = self.x
 
     def shoot(self):
         if random.randint(1, 100) < 2:  # chance de atirar

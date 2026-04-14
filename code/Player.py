@@ -3,22 +3,20 @@ import os
 from Entity import Entity
 
 
-# Removi o import de Bullet do topo para evitar erro circular
+
 
 class Player(Entity):
     def __init__(self, x, y, plane_config):
-        # 1. Carregar a imagem real usando o nome que está no PlaneConfig
         base_path = os.path.dirname(__file__)
         img_path = os.path.join(base_path, "..", "asset", f"{plane_config.asset_name}.png")
 
-        try:
-            img = pygame.image.load(img_path).convert_alpha()
-            sprite = pygame.transform.scale(img, (50, 50))  # Ajuste o tamanho se necessário
-        except pygame.error:
-            # Caso a imagem falhe, cria um bloco reserva para o jogo não fechar
-            sprite = pygame.Surface((50, 50))
-            sprite.fill((0, 255, 0))
+        img = pygame.image.load(img_path).convert_alpha()
 
+        # --- ROTACIONAR A NAVE ---
+        # rotate(imagem, ângulo): 90 graus gira ela para olhar para CIMA
+        img = pygame.transform.rotate(img, 90)
+
+        sprite = pygame.transform.scale(img, (50, 50))
         super().__init__("player", x, y, sprite)
 
         self.speed = plane_config.speed
@@ -30,14 +28,21 @@ class Player(Entity):
     def move(self):
         keys = pygame.key.get_pressed()
 
+        # Esquerda e Direita
         if keys[pygame.K_LEFT] and self.x > 0:
             self.x -= self.speed
-        if keys[pygame.K_RIGHT] and self.x < 1190:  # Limite da tela (1240 - 50)
+        if keys[pygame.K_RIGHT] and self.x < 1190:
             self.x += self.speed
 
-        # IMPORTANTE: Atualiza o retângulo de colisão e desenho
-        self.rect.x = self.x
+        # --- ADICIONAR PARA FRENTE E PARA TRÁS ---
+        if keys[pygame.K_UP] and self.y > 0:
+            self.y -= self.speed
+        if keys[pygame.K_DOWN] and self.y < 600:
+            self.y += self.speed
 
+        # Atualiza a posição do retângulo de colisão
+        self.rect.x = self.x
+        self.rect.y = self.y  # Não esqueça de atualizar o Y também!
     def shoot(self):
         now = pygame.time.get_ticks()
 
