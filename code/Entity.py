@@ -10,7 +10,8 @@ class Entity:
         self.move()
 
     def move(self):
-        pass
+        self.y += self.speed
+        self.rect.y = self.y  # Atualiza a posição da colisão
 
     def draw(self, window):
         window.blit(self.sprite, (self.x, self.y))

@@ -1,4 +1,8 @@
+import os
 import random
+
+import pygame
+
 from Player import Player
 from Enemy import Enemy
 from Collision import check_collision
@@ -15,7 +19,14 @@ class Level:
         self.enemies = []
         self.score = 0
         self.spawn_timer = 0
-
+        self.load_background()
+    def load_background(self):
+        # Carrega a imagem baseada no nome que está no LevelConfig
+        # O caminho precisa subir uma pasta se o Level.py estiver dentro de /code
+        bg_path = os.path.join(os.path.dirname(__file__), "..", "asset", f"{self.current_level.bg_name}.png")
+        self.bg_image = pygame.image.load(bg_path).convert()
+        # Verifique se o tamanho abaixo (1240, 650) é o mesmo da sua janela na Main
+        self.bg_image = pygame.transform.scale(self.bg_image, (1240, 650))
     def spawn_enemy(self):
         x = random.randint(0, 760)
         enemy = Enemy(x, -50, self.current_level.enemy_speed)
@@ -43,7 +54,8 @@ class Level:
 
             if self.level_index < len(LEVELS):
                 self.current_level = LEVELS[self.level_index]
-                print("Mudou para fase:", self.current_level.name)
+                self.load_background()
+                print("Nova fase:", self.current_level.name)
 
     def handle_collisions(self):
         for bullet in self.player.bullets:
@@ -61,7 +73,8 @@ class Level:
                     self.player.life -= 1
 
     def draw(self):
-        self.window.fill(self.current_level.bg_color)
+        # self.window.fill(self.current_level.bg_color) <-- REMOVa ESTA LINHA
+        self.window.blit(self.bg_image, (0, 0))  # DESENHA A IMAGEM DE FUNDO
 
         self.player.draw(self.window)
 
@@ -106,3 +119,5 @@ class Level:
         if self.player.life <= 0:
             return True
         return False
+
+

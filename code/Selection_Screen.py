@@ -32,20 +32,34 @@ class SelectionScreen:
         return GameState.SELECTION, None
 
     def draw(self):
+        import os
         self.window.fill((20, 20, 20))
 
-        title = self.title_font.render("ESCOLHA SEU AVIÃO", True, (255,255,255))
+        title = self.title_font.render("ESCOLHA SEU AVIÃO", True, (255, 255, 255))
         self.window.blit(title, (180, 50))
 
         for i, plane in enumerate(PLANES):
             x = 200 + i * 150
             y = 250
 
-            rect = pygame.Rect(x, y, 80, 80)
-            pygame.draw.rect(self.window, plane.color, rect)
+            # 1. Monta o caminho da imagem do avião
+            base_path = os.path.dirname(__file__)
+            img_path = os.path.join(base_path, "..", "asset", f"{plane.asset_name}.png")
 
+            try:
+                # 2. Carrega e redimensiona a imagem para a tela de seleção
+                img = pygame.image.load(img_path).convert_alpha()
+                img = pygame.transform.scale(img, (100, 100))  # Um pouco maior que o quadrado
+
+                # 3. Desenha a imagem na tela
+                self.window.blit(img, (x - 10, y - 10))
+            except:
+                # Caso a imagem falhe, desenha o quadrado verde de segurança
+                pygame.draw.rect(self.window, (0, 200, 0), (x, y, 80, 80))
+
+            # 4. Desenha a borda de seleção ao redor da nave selecionada
             if i == self.selected:
-                pygame.draw.rect(self.window, (255,255,255), rect, 3)
+                pygame.draw.rect(self.window, (255, 255, 255), (x - 15, y - 15, 110, 110), 3)
 
-            name_text = self.font.render(plane.name, True, (255,255,255))
-            self.window.blit(name_text, (x, y + 90))
+            name_text = self.font.render(plane.name, True, (255, 255, 255))
+            self.window.blit(name_text, (x, y + 100))

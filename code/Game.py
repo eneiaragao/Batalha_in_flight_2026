@@ -11,8 +11,9 @@ class Game:
     def __init__(self):
         pygame.init()
 
-        self.window = pygame.display.set_mode((800, 600))
-        pygame.display.set_caption("Air Combat")
+        # Altere para o tamanho que definimos no Level.py (ou mude o Level para 800x600)
+        self.window = pygame.display.set_mode((1240, 650))
+        pygame.display.set_caption("Mountain Shooter")  # Nome conforme o projeto do professor
 
         self.database = Database()
         self.selection_screen = SelectionScreen(self.window)

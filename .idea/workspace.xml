@@ -4,33 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Jogo_Teste.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Bullet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Button.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Collision.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Enemy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/EnemyShot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Entity.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/EntityFactory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/EntityMediator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Game.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Game_State.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Level.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Level_Config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Menu.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Plane_Config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Player.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Score_Screen.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/Selection_Screen.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/database.py" afterDir="false" />
+    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="Commit initial">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Bullet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Entity.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Entity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/EntityFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/EntityFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Level.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Level.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Level_Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Level_Config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Plane_Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Plane_Config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Selection_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Selection_Screen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +62,7 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\PycharmProjects\Projetos\Jogo_Teste\code" />
+      <recent name="C:\Users\User\PycharmProjects\Projetos\Jogo_Teste" />
     </key>
   </component>
   <component name="RunManager">
@@ -119,6 +106,15 @@
       <updated>1775956414381</updated>
       <workItem from="1775961666422" duration="152000" />
     </task>
+    <task id="LOCAL-00001" summary="Commit initial">
+      <option name="closed" value="true" />
+      <created>1775996814009</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775996814009</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -131,5 +127,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit initial" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit initial" />
   </component>
 </project>
