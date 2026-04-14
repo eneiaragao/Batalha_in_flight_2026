@@ -1,6 +1,8 @@
 import pygame
 import os
 
+from Const import C_WHITE, PLAYER_SIZE
+
 
 class Bullet:
     def __init__(self, x, y, direction, speed, type):
@@ -22,11 +24,11 @@ class Bullet:
         try:
             self.sprite = pygame.image.load(img_path).convert_alpha()
             # Ajusta o tamanho do tiro para ficar proporcional
-            self.sprite = pygame.transform.scale(self.sprite, (10, 20))
+            self.sprite = pygame.transform.scale(self.sprite, PLAYER_SIZE )
         except:
             # Fallback caso a imagem falhe
             self.sprite = pygame.Surface((5, 10))
-            self.sprite.fill((255, 255, 255))
+            self.sprite.fill(C_WHITE )
 
         self.rect = self.sprite.get_rect(topleft=(x, y))
 
