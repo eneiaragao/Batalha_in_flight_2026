@@ -48,8 +48,8 @@ class Player(Entity):
 
         if now - self.last_shot > self.shoot_delay:
             from Bullet import Bullet  # Import local para evitar travamento
-            # Usa o Player1Shot.png ou similar se quiser,
-            # mas por enquanto vamos manter a lógica da Bullet
+            # Usa o Player1Shot.png ou similar ,
+            # mas por enquanto manter a lógica da Bullet
             bullet = Bullet(self.x + 20, self.y, -1, 7, "player")
             self.bullets.append(bullet)
             self.last_shot = now

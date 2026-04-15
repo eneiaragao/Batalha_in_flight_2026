@@ -2,6 +2,7 @@ import os
 
 import pygame
 from Button import Button
+from Const import C_WHITE, MENU_BUTTONS_CONFIG
 from Game_State import GameState
 
 class Menu:
@@ -17,13 +18,7 @@ class Menu:
         pygame.mixer.music.load(path_music)
         pygame.mixer.music.play(-1)
 
-        self.buttons = [
-            Button("Player 1", 300, 150, 200, 50),
-            Button("2 Players Coop", 300, 220, 200, 50),
-            Button("2 Players VS", 300, 290, 200, 50),
-            Button("Score", 300, 360, 200, 50),
-            Button("Exit", 300, 430, 200, 50),
-        ]
+        self.buttons = [Button(*config) for config in MENU_BUTTONS_CONFIG]
 
         self.title_font = pygame.font.SysFont(None, 60)
 
@@ -56,7 +51,7 @@ class Menu:
         # Remova ou comente o window.fill para não cobrir o fundo
         # self.window.fill((30, 30, 30))
 
-        title = self.title_font.render("AIR COMBAT", True, (255, 255, 255))
+        title = self.title_font.render("AIR COMBAT", True, C_WHITE)
         self.window.blit(title, (250, 50))
 
         for button in self.buttons:

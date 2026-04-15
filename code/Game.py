@@ -1,4 +1,6 @@
 import pygame
+
+from Const import SCREEN_WIDTH, SCREEN_HEIGHT
 from database import Database
 from Level import Level
 from Menu import Menu
@@ -11,9 +13,9 @@ class Game:
     def __init__(self):
         pygame.init()
 
-        # Altere para o tamanho que definimos no Level.py (ou mude o Level para 800x600)
-        self.window = pygame.display.set_mode((1240, 650))
-        pygame.display.set_caption("Mountain Shooter")  # Nome conforme o projeto do professor
+
+        self.window = pygame.display.set_mode(( SCREEN_WIDTH, SCREEN_HEIGHT))
+        pygame.display.set_caption("BATTLE IN FLIGHT 2026")
 
         self.database = Database()
         self.selection_screen = SelectionScreen(self.window)

@@ -30,7 +30,7 @@ class Level:
             explosion_path = os.path.join(base_path, "..", "asset", EXPLOSION_SOUND)
             if os.path.exists(explosion_path):
                 self.explosion_sfx = pygame.mixer.Sound(explosion_path)
-                self.explosion_sfx.set_volume(0.4)  # Volume em 40%
+                self.explosion_sfx.set_volume(0.6)  # Volume em 60%
                 print("Som de explosão carregado com sucesso.")
             else:
                 print(f"AVISO: Arquivo de som {EXPLOSION_SOUND} não encontrado.")

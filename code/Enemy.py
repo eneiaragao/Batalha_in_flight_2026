@@ -1,10 +1,9 @@
 import pygame
 import random
 from Entity import Entity
-from Bullet import Bullet
 import os
 
-# Isso pega o caminho correto da pasta do seu projeto
+# pega o caminho correto da pasta do projeto
 base_path = os.path.dirname(__file__)
 img_path = os.path.join(base_path, "..", "asset", "Player1.png") # O ".." volta uma pasta
 
@@ -12,7 +11,7 @@ img_path = os.path.join(base_path, "..", "asset", "Player1.png") # O ".." volta 
 class Enemy(Entity):
     def __init__(self, x, y, speed):
         base_path = os.path.dirname(__file__)
-        # Use o caminho dinâmico para evitar erros de pasta
+        #caminho dinâmico para evitar erros de pasta
         img_path = os.path.join(base_path, "..", "asset", "Enemy1.png")
 
         img = pygame.image.load(img_path).convert_alpha()
