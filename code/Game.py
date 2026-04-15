@@ -38,14 +38,12 @@ class Game:
                     self.state = GameState.SELECTION
                 elif new_state in [GameState.COOP, GameState.VS]:
                     self.state = new_state
-                    # Inicia com as duas primeiras naves da lista PLANES
                     self.level = Level(self.window, self.state, [PLANES[0], PLANES[1]])
                 elif new_state == GameState.SCORE:
                     self.state = GameState.SCORE
                 elif new_state == GameState.EXIT:
                     self.running = False
 
-            # --- ONDE A MÁGICA ACONTECE ---
             elif self.state in [GameState.PLAYING, GameState.COOP, GameState.VS]:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
@@ -55,31 +53,34 @@ class Game:
                     self.level.update()
                     self.level.draw()
 
-                    # MUDANÇA AQUI: Verifica morte OU se venceu a última fase
+                    # --- VERIFICAÇÃO DE FIM DE JOGO ---
                     if self.level.is_game_over() or self.level.is_victory():
+                        lista_players = self.level.mediator.players
 
-                        # 1. Lógica para definir o nome no ranking
+                        # 1. Define o nome para o Ranking
                         if self.state == GameState.COOP:
                             name = "Equipe"
                         elif self.state == GameState.VS:
-                            # Verifica quem fez mais pontos para dar o nome
-                            p1 = self.level.players[0]
-                            p2 = self.level.players[1]
+                            p1 = lista_players[0]
+                            p2 = lista_players[1]
                             name = "P1 Vencedor" if p1.score > p2.score else "P2 Vencedor"
                         else:
                             name = "Player 1"
 
-                        # 2. Pega o score (média no Coop ou maior no VS)
+                        # 2. Pega o score processado (Média no Coop / Maior no VS)
                         score_final = self.level.get_final_score()
 
-                        # 3. SALVAMENTO EFETIVO
-                        # DEBUG: Verifique se isso aparece no seu terminal quando você morre
-                        print(f"DEBUG: Tentando salvar {name} com score {score_final}")
-
+                        # 3. Executa o salvamento
+                        print(f"DEBUG: Salvando {name} com score {score_final}")
                         self.database.insert_score(name, score_final)
-                        # Pequeno delay antes de voltar ao menu
-                        pygame.time.delay(1000)
+
+                        # --- MODIFICAÇÃO DE SEGURANÇA ---
+                        # Removemos o level e mudamos o estado ANTES do delay
+                        # Isso impede que o loop rode novamente e salve duplicado
+                        self.level = None
                         self.state = GameState.MENU
+
+                        pygame.time.delay(1000)
 
             elif self.state == GameState.SCORE:
                 new_state = self.score_screen.run()

@@ -26,12 +26,13 @@ class Enemy(Entity):
         self.rect.y = self.y
         self.rect.x = self.x
 
+    # Dentro do método shoot() do Enemy.py
     def shoot(self):
         if random.randint(1, 100) < 2:  # chance de atirar
-            from Bullet import Bullet  # Import local evita o erro circular
-            bullet = Bullet(self.x + 20, self.y, 1, 5, "enemy")
+            from Bullet import Bullet
+            # Adicione o None no final para preencher o owner_id
+            bullet = Bullet(self.x + 20, self.y, 1, 5, "enemy", None)
             self.bullets.append(bullet)
-
     def update(self):
         self.move()
         self.shoot()

@@ -1,14 +1,15 @@
 import pygame
 import os
-from Const import C_WHITE, PLAYER_SIZE, SCREEN_WIDTH
-
+from Const import C_WHITE, SCREEN_WIDTH # Removido o import do Player
 class Bullet:
-    def __init__(self, x, y, direction, speed, type):
+    def __init__(self, x, y, direction, speed, type, owner_id):
+        super().__init__()
         self.x = x
         self.y = y
         self.direction = direction # Para a direita será 1, para a esquerda será -1
         self.speed = speed
         self.type = type  # "player" ou "enemy"
+        self.owner_id = owner_id  # <--- Isso salva quem atirou!
 
         base_path = os.path.dirname(__file__)
         img_name = "Player1Shot.png" if self.type == "player" else "Enemy1Shot.png"
@@ -39,4 +40,4 @@ class Bullet:
 
     def is_off_screen(self):
         """Verifica se o tiro saiu da tela para ser removido"""
-        return self.x < 0 or self.x > SCREEN_WIDTH
+        return self.y < -50 or self.y > 750

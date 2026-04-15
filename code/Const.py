@@ -10,7 +10,7 @@ C_SKY_BLUE = (150, 150, 255)
 #E
 # Sons
 EXPLOSION_SOUND = "Som_explosao.mp3"  # ARQUIVO EXPLOSÃO
-
+EXPLOSION_VOLUME= 0.6
 #F
 FONT_SCORE_SIZE_DEFAULT = 40  # Tamanhos de Fonte
 FONT_SCORE_SIZE_TITLE = 60  # Tamanhos de Fonte
@@ -26,6 +26,7 @@ SPAWN_X_MAX = SCREEN_WIDTH - 50  # 1190 era SCREEN_WIDTH (1240) menos a largura 
 SCROLL_SPEED = 2  # Configurações do Cenário
 SBG_SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)  # Configurações do Cenário
 SUBTEXT_POS = (300, 350)  # Posições de Texto (X, Y)
+
 
 #P
 PLAYER_START_X = 600  # Configurações do Player

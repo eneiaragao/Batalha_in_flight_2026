@@ -70,7 +70,7 @@ class ScoreScreen:
             y_coord += 55  # Espaçamento entre as linhas
 
         # 4. Desenha o rodapé "Pressione qualquer tecla..." com fundo azul
-        # Colocamos o rodapé um pouco mais para baixo
+        # rodapé um pouco mais para baixo
         y_rodape = SCREEN_HEIGHT - 80
         rect_info = pygame.Rect(x_coord, y_rodape, largura_barra, 40)
         pygame.draw.rect(self.window, C_ROYAL_BLUE, rect_info)

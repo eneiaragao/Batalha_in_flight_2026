@@ -8,7 +8,7 @@ from Game_State import GameState
 class Menu:
     def __init__(self, window):
         self.window = window
-        # Carregar fundo do menu
+        # Carrega fundo do menu
         path_bg = os.path.join(os.path.dirname(__file__), "..", "asset", "Background.png")
         self.menu_bg = pygame.image.load(path_bg).convert()
         self.menu_bg = pygame.transform.scale(self.menu_bg, (SCREEN_WIDTH,SCREEN_HEIGHT))
@@ -33,9 +33,9 @@ class Menu:
                     if i == 0:
                         return GameState.PLAYING  # Single
                     elif i == 1:
-                        return GameState.COOP  # MUDOU AQUI
+                        return GameState.COOP  # Modo cooperative
                     elif i == 2:
-                        return GameState.VS  # MUDOU AQUI
+                        return GameState.VS  # Modo competitivo
                     elif i == 3:
                         return GameState.SCORE
                     elif i == 4:

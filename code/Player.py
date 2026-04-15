@@ -61,16 +61,18 @@ class Player(Entity):
     def shoot(self):
         now = pygame.time.get_ticks()
         if now - self.last_shot > self.shoot_delay:
+            # O import local deve ficar aqui para evitar erro circular
             from Bullet import Bullet
-            # x + 25 centraliza o tiro no bico da nave (50px de largura)
-            # direção -1 faz o tiro SUBIR
-            bullet = Bullet(self.x + 25, self.y, -1, 10, "player")
+
+            # x + 25 centraliza no bico da nave.
+            # Passamos self.id como o ÚLTIMO parâmetro para ser o 'owner_id'
+            bullet = Bullet(self.x + 25, self.y, -1, 10, "player", self.id)
+
             self.bullets.append(bullet)
             self.last_shot = now
 
     def update(self):
         self.move()
-
         keys = pygame.key.get_pressed()
 
         # TECLA DE TIRO SEPARADA
@@ -81,4 +83,4 @@ class Player(Entity):
 
         for bullet in self.bullets:
             bullet.update()
-        self.bullets = [b for b in self.bullets if b.y > 0]
+        self.bullets = [b for b in self.bullets if b.y > -50]

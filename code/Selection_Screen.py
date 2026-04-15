@@ -1,3 +1,5 @@
+import os
+
 import pygame
 
 from Const import C_WHITE, FONT_SCORE_SIZE_DEFAULT, FONT_SCORE_SIZE_TITLE, C_BRIGHT_GREEN, SCREEN_WIDTH
@@ -9,10 +11,20 @@ class SelectionScreen:
     def __init__(self, window):
         self.window = window
         self.selected = 0
-
         self.font = pygame.font.SysFont(None, FONT_SCORE_SIZE_DEFAULT)
         self.title_font = pygame.font.SysFont(None, FONT_SCORE_SIZE_TITLE)
-
+        # Pré-carrega as imagens para não travar o draw
+        self.plane_images = []
+        import os
+        base_path = os.path.dirname(__file__)
+        for plane in PLANES:
+            try:
+                path = os.path.join(base_path, "..", "asset", f"{plane.asset_name}.png")
+                img = pygame.image.load(path).convert_alpha()
+                img = pygame.transform.scale(img, (100, 100))
+                self.plane_images.append(img)
+            except:
+                self.plane_images.append(None)
     def run(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -34,7 +46,7 @@ class SelectionScreen:
         return GameState.SELECTION, None
 
     def draw(self):
-        import os
+
         self.window.fill((20, 20, 20))
 
         # 1. Renderiza o texto
@@ -53,7 +65,7 @@ class SelectionScreen:
         # --- Lógica para Centralizar as Naves ---
         spacing = 150  # Espaço entre o início de cada nave
         total_group_width = len(PLANES) * spacing
-        # Calculamos onde deve começar o primeiro avião para que o grupo fique no meio
+        # Calcula onde deve começar o primeiro avião para que o grupo fique no meio
         start_x = (SCREEN_WIDTH // 2) - (total_group_width // 2) + 25
 
         for i, plane in enumerate(PLANES):
