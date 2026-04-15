@@ -2,7 +2,7 @@ import os
 
 import pygame
 from Button import Button
-from Const import C_WHITE, MENU_BUTTONS_CONFIG
+from Const import C_WHITE, MENU_BUTTONS_CONFIG, SCREEN_WIDTH, SCREEN_HEIGHT, C_ROYAL_BLUE
 from Game_State import GameState
 
 class Menu:
@@ -11,7 +11,7 @@ class Menu:
         # Carregar fundo do menu
         path_bg = os.path.join(os.path.dirname(__file__), "..", "asset", "Background.png")
         self.menu_bg = pygame.image.load(path_bg).convert()
-        self.menu_bg = pygame.transform.scale(self.menu_bg, (1240, 650))
+        self.menu_bg = pygame.transform.scale(self.menu_bg, (SCREEN_WIDTH,SCREEN_HEIGHT))
 
         # Tocar música do menu
         path_music = os.path.join(os.path.dirname(__file__), "..", "asset", "Menu.mp3")
@@ -24,7 +24,6 @@ class Menu:
 
     def run(self):
         for event in pygame.event.get():
-
             if event.type == pygame.QUIT:
                 return GameState.EXIT
 
@@ -32,11 +31,11 @@ class Menu:
                 if button.is_clicked(event):
 
                     if i == 0:
-                        return GameState.PLAYING
+                        return GameState.PLAYING  # Single
                     elif i == 1:
-                        print("Modo Coop")
+                        return GameState.COOP  # MUDOU AQUI
                     elif i == 2:
-                        print("Modo VS")
+                        return GameState.VS  # MUDOU AQUI
                     elif i == 3:
                         return GameState.SCORE
                     elif i == 4:
@@ -48,11 +47,8 @@ class Menu:
         # Primeiro desenha a imagem de fundo carregada no __init__
         self.window.blit(self.menu_bg, (0, 0))
 
-        # Remova ou comente o window.fill para não cobrir o fundo
-        # self.window.fill((30, 30, 30))
-
-        title = self.title_font.render("AIR COMBAT", True, C_WHITE)
-        self.window.blit(title, (250, 50))
+        title = self.title_font.render("AIR COMBAT", True, C_ROYAL_BLUE )
+        self.window.blit(title, (500, 50))
 
         for button in self.buttons:
             button.draw(self.window)

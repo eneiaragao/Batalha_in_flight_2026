@@ -1,7 +1,13 @@
+import os
 import sqlite3
 
 class Database:
     def __init__(self):
+        # Localiza a pasta onde este arquivo 'database.py' está salvo
+        diretorio_atual = os.path.dirname(os.path.abspath(__file__))
+        caminho_banco = os.path.join(diretorio_atual, "scores.db")
+
+        # Conecta usando o caminho completo
         self.conn = sqlite3.connect("scores.db")
         self.create_table()
 

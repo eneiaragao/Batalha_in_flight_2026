@@ -28,9 +28,9 @@ SBG_SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)  # Configurações do Cenário
 SUBTEXT_POS = (300, 350)  # Posições de Texto (X, Y)
 
 #P
-PLAYER_START_X = 400  # Configurações do Player
+PLAYER_START_X = 600  # Configurações do Player
 PLAYER_START_Y = 500  # Configurações do Player
-POINTS_PER_LEVEL = 100  # Regras de Jogo para cada fase
+POINTS_PER_LEVEL = 100   # Regras de Jogo para cada fase
 # Tamanhos de Sprites
 
 
@@ -42,6 +42,8 @@ TITLE_SCORE_TXT = "TOP SCORES"  # Conteúdo do Texto
 TITLE_SCORE_TXT2 = "Pressione qualquer tecla para voltar"  # Conteúdo do Texto
 #v
 VICTORY_TEXT_POS = (350, 250)  # Posições de Texto (X, Y)
+LIVE_PLAYERS=4
+
 
 # --- CONFIGURAÇÕES DE BOTÕES DO MENU ---
 BTN_WIDTH = 200

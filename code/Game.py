@@ -1,20 +1,18 @@
 import pygame
-
-from Const import SCREEN_WIDTH, SCREEN_HEIGHT
-from database import Database
+from Game_State import GameState
 from Level import Level
 from Menu import Menu
-from Game_State import GameState
 from Score_Screen import ScoreScreen
 from Selection_Screen import SelectionScreen
+from Const import SCREEN_WIDTH, SCREEN_HEIGHT
+from Plane_Config import PLANES
+from database import Database
 
 
 class Game:
     def __init__(self):
         pygame.init()
-
-
-        self.window = pygame.display.set_mode(( SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption("BATTLE IN FLIGHT 2026")
 
         self.database = Database()
@@ -38,31 +36,54 @@ class Game:
 
                 if new_state == GameState.PLAYING:
                     self.state = GameState.SELECTION
-
+                elif new_state in [GameState.COOP, GameState.VS]:
+                    self.state = new_state
+                    # Inicia com as duas primeiras naves da lista PLANES
+                    self.level = Level(self.window, self.state, [PLANES[0], PLANES[1]])
                 elif new_state == GameState.SCORE:
                     self.state = GameState.SCORE
-
                 elif new_state == GameState.EXIT:
                     self.running = False
 
-            elif self.state == GameState.PLAYING:
+            # --- ONDE A MÁGICA ACONTECE ---
+            elif self.state in [GameState.PLAYING, GameState.COOP, GameState.VS]:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         self.running = False
 
-                self.level.update()
-                self.level.draw()
+                if self.level:
+                    self.level.update()
+                    self.level.draw()
 
-                if self.level.is_game_over():
-                    name = "Player"
-                    score = self.level.score
-                    self.database.insert_score(name, score)
-                    self.state = GameState.MENU
+                    # MUDANÇA AQUI: Verifica morte OU se venceu a última fase
+                    if self.level.is_game_over() or self.level.is_victory():
+
+                        # 1. Lógica para definir o nome no ranking
+                        if self.state == GameState.COOP:
+                            name = "Equipe"
+                        elif self.state == GameState.VS:
+                            # Verifica quem fez mais pontos para dar o nome
+                            p1 = self.level.players[0]
+                            p2 = self.level.players[1]
+                            name = "P1 Vencedor" if p1.score > p2.score else "P2 Vencedor"
+                        else:
+                            name = "Player 1"
+
+                        # 2. Pega o score (média no Coop ou maior no VS)
+                        score_final = self.level.get_final_score()
+
+                        # 3. SALVAMENTO EFETIVO
+                        # DEBUG: Verifique se isso aparece no seu terminal quando você morre
+                        print(f"DEBUG: Tentando salvar {name} com score {score_final}")
+
+                        self.database.insert_score(name, score_final)
+                        # Pequeno delay antes de voltar ao menu
+                        pygame.time.delay(1000)
+                        self.state = GameState.MENU
 
             elif self.state == GameState.SCORE:
                 new_state = self.score_screen.run()
                 self.score_screen.draw()
-
                 if new_state == GameState.MENU:
                     self.state = GameState.MENU
 
@@ -72,16 +93,10 @@ class Game:
 
                 if new_state == GameState.PLAYING:
                     self.selected_plane = plane
-                    self.level = Level(self.window, plane)
+                    self.level = Level(self.window, GameState.PLAYING, [self.selected_plane])
                     self.state = GameState.PLAYING
-
                 elif new_state == GameState.MENU:
                     self.state = GameState.MENU
 
-                elif new_state == GameState.EXIT:
-                    self.running = False
-
-            # Essencial para a tela deixar de ficar preta:
             pygame.display.flip()
-
         pygame.quit()
