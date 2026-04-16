@@ -2,14 +2,15 @@ import os
 
 import pygame
 
-from Const import C_WHITE, FONT_SCORE_SIZE_DEFAULT, FONT_SCORE_SIZE_TITLE, C_BRIGHT_GREEN, SCREEN_WIDTH
+from Const import C_WHITE, FONT_SCORE_SIZE_DEFAULT, FONT_SCORE_SIZE_TITLE, C_BRIGHT_GREEN, SCREEN_WIDTH, C_GREEN
 from Game_State import GameState
 from Plane_Config import PLANES
 
 
 class SelectionScreen:
-    def __init__(self, window):
+    def __init__(self, window, mode=GameState.PLAYING):
         self.window = window
+        self.mode = mode  # Salva o modo
         self.selected = 0
         self.font = pygame.font.SysFont(None, FONT_SCORE_SIZE_DEFAULT)
         self.title_font = pygame.font.SysFont(None, FONT_SCORE_SIZE_TITLE)
@@ -46,47 +47,56 @@ class SelectionScreen:
         return GameState.SELECTION, None
 
     def draw(self):
-
         self.window.fill((20, 20, 20))
-
-        # 1. Renderiza o texto
-        title = self.title_font.render("ESCOLHA SEU AVIÃO", True, C_WHITE)
-
-        # 2. Obtém o retângulo do texto para calcular o centro
-        title_rect = title.get_rect()
-
-        # 3. Define o centro do retângulo como o centro da largura da tela (SCREEN_WIDTH)
-        title_rect.centerx = SCREEN_WIDTH // 2
-        title_rect.y = 50  # Mantém a altura no topo
-
-        # 4. Desenha usando o retângulo calculado
+        title_text = "ESCOLHA SEU AVIÃO" if self.mode == GameState.PLAYING else "PREPAREM-SE PARA O COMBATE"
+        title = self.title_font.render(title_text, True, C_WHITE)
+        title_rect = title.get_rect(centerx=SCREEN_WIDTH // 2, y=50)
         self.window.blit(title, title_rect)
 
-        # --- Lógica para Centralizar as Naves ---
-        spacing = 150  # Espaço entre o início de cada nave
-        total_group_width = len(PLANES) * spacing
-        # Calcula onde deve começar o primeiro avião para que o grupo fique no meio
-        start_x = (SCREEN_WIDTH // 2) - (total_group_width // 2) + 25
+        spacing = 300
+        start_x = (SCREEN_WIDTH // 2) - (spacing // 2) - 50
+        font_instr = pygame.font.SysFont("Arial", 18, bold=True)
 
         for i, plane in enumerate(PLANES):
             x = start_x + i * spacing
             y = 250
 
-            base_path = os.path.dirname(__file__)
-            img_path = os.path.join(base_path, "..", "asset", f"{plane.asset_name}.png")
+            # Desenha a imagem da nave
+            if self.plane_images[i]:
+                self.window.blit(self.plane_images[i], (x, y))
 
-            try:
-                img = pygame.image.load(img_path).convert_alpha()
-                img = pygame.transform.scale(img, (100, 100))
-                self.window.blit(img, (x - 10, y - 10))
-            except:
-                pygame.draw.rect(self.window, C_BRIGHT_GREEN, (x, y, 80, 80))
+            # SÓ MOSTRA A BORDA DE SELEÇÃO NO MODO SINGLE PLAYER
+            if self.mode == GameState.PLAYING and i == self.selected:
+                pygame.draw.rect(self.window, C_WHITE, (x - 10, y - 10, 120, 120), 3)
 
-            # Borda de seleção
-            if i == self.selected:
-                pygame.draw.rect(self.window, C_WHITE, (x - 15, y - 15, 110, 110), 3)
-
-            # Nome do avião (também centralizado embaixo da imagem)
+            # Nome do avião
             name_text = self.font.render(plane.name, True, C_WHITE)
-            name_rect = name_text.get_rect(centerx=x + 40, y=y + 100)
-            self.window.blit(name_text, name_rect)
+            self.window.blit(name_text, (x + 10, y + 110))
+
+            # --- LÓGICA DE COMANDOS CORRIGIDA ---
+            if self.mode == GameState.PLAYING:
+                # Se for Single Player, os comandos são iguais para os dois aviões (Setas/Ctrl)
+                comandos = ["CONTROLES", "CTRL = Atirar", "SETAS = (↑ ↓ ← →)"]
+
+            else:
+                # Se for COOP ou VS, cada avião mostra seu respectivo dono
+                if i == 0:
+                    comandos = ["PLAYER 1", "CTRL = Atirar", "SETAS = Mover (↑ ↓ ← →)"]
+                else:
+                    comandos = ["PLAYER 2", "L = Atirar", "W, A, S, D = Mover"]
+
+            for j, linha in enumerate(comandos,):
+                cor = (255, 255, 0) if j == 0 else C_WHITE
+                cmd_surf = font_instr.render(linha, True, cor)
+                self.window.blit(cmd_surf, (x, y + 150 + (j * 25)))
+                # --- FORA DO LOOP (Para desenhar o aviso de iniciar uma única vez) ---
+                # Cria a variável de teste aqui
+                msg_start = "Aperte ENTER para iniciar o jogo"
+
+                # Renderiza com uma cor chamativa (ex: Verde ou Amarelo)
+                start_surf = font_instr.render(msg_start, True, C_GREEN )
+
+                # Centraliza exatamente no meio da largura da tela
+                start_rect = start_surf.get_rect(centerx=SCREEN_WIDTH // 2, y=600)
+                self.window.blit(start_surf, start_rect)
+

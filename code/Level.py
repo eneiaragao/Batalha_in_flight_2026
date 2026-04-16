@@ -3,8 +3,9 @@ import random
 import pygame
 from Game_State import GameState
 from Const import (
-     POINTS_PER_LEVEL, PLAYER_START_X, PLAYER_START_Y,
-    SCROLL_SPEED, SBG_SIZE, SPAWN_X_MAX, SCREEN_HEIGHT, EXPLOSION_SOUND, EXPLOSION_VOLUME
+    POINTS_PER_LEVEL, PLAYER_START_X, PLAYER_START_Y,
+    SCROLL_SPEED, SBG_SIZE, SPAWN_X_MAX, SCREEN_HEIGHT, EXPLOSION_SOUND, EXPLOSION_VOLUME, C_WHITE, C_SKY_BLUE,
+    SCORE_TO_POWER_UP
 )
 from Level_Config import LEVELS
 # IMPORTAÇÕES DOS NOVOS PADRÕES
@@ -93,7 +94,7 @@ class Level:
         for p in self.mediator.players:
             # Se o score for múltiplo de 200 e ele não estiver com power-up ativo
             # Usamos score > 0 para não ativar no início do jogo
-            if p.score > 0 and p.score % 200 == 0 and not p.power_up_active:
+            if p.score > 0 and p.score % SCORE_TO_POWER_UP == 0 and not p.power_up_active:
                 p.activate_power_up()
                 print(f"DEBUG: Power-up ativado para Player {p.id} (Score: {p.score})")
 
@@ -137,7 +138,7 @@ class Level:
         # Pega os jogadores direto do mediador
         for i, player in enumerate(self.mediator.players):
             # Mostra P1 e P2 com seus respectivos scores individuais na tela
-            color = (255, 255, 255) if player.life > 0 else (150, 150, 150)
+            color = (C_WHITE) if player.life > 0 else (C_SKY_BLUE)
             txt = f"Player {player.id} - Score: {player.score} | Vida: {player.life}"
             surf = font.render(txt, True, color)
             self.window.blit(surf, (10, 10 + (i * 30)))

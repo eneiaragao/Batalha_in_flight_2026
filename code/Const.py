@@ -26,15 +26,16 @@ SPAWN_X_MAX = SCREEN_WIDTH - 50  # 1190 era SCREEN_WIDTH (1240) menos a largura 
 SCROLL_SPEED = 2  # Configurações do Cenário
 SBG_SIZE = (SCREEN_WIDTH, SCREEN_HEIGHT)  # Configurações do Cenário
 SUBTEXT_POS = (300, 350)  # Posições de Texto (X, Y)
-
+SCORE_TO_POWER_UP = 500  # Valor para ativar o Power-Up tiros duplos
+SCORE_POWER_UP_TIME=1080
+SPEED_SHOOT=15 #VELOCIDADE DO TIRO NORMAL
+SPEED_SHOOT_POWER=23 #VELOCIDADE DO TIRO POWER
 
 #P
-PLAYER_START_X = 600  # Configurações do Player
-PLAYER_START_Y = 500  # Configurações do Player
-POINTS_PER_LEVEL = 100   # Regras de Jogo para cada fase
+PLAYER_START_X = 600  # Configurações do Player(posição na tela player1)
+PLAYER_START_Y = 500  # Configurações do Player(posição na tela player2)
+POINTS_PER_LEVEL = 200   # Regras de Jogo para cada fase
 # Tamanhos de Sprites
-
-
 PLAYER_SIZE = (10, 20)  #  tamanho dO TIRO:
 
 #T

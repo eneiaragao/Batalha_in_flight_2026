@@ -1,7 +1,7 @@
 import pygame
 import os
 
-from Const import LIVE_PLAYERS
+from Const import LIVE_PLAYERS, SCORE_POWER_UP_TIME, SPEED_SHOOT, SPEED_SHOOT_POWER
 from Entity import Entity
 
 
@@ -34,8 +34,8 @@ class Player(Entity):
 
     def activate_power_up(self):
         self.power_up_active = True
-        # 20 segundos * 60 FPS = 1200 frames
-        self.power_up_timer = 1200
+        # 30 segundos * 60 FPS = 1800 frames
+        self.power_up_timer =SCORE_POWER_UP_TIME
     def move(self):
         keys = pygame.key.get_pressed()
 
@@ -76,12 +76,12 @@ class Player(Entity):
 
             if self.power_up_active:
                 # TIRO DUPLO (Um em cada lado da nave)
-                b1 = Bullet(self.x + 5, self.y, -1, 15, "player", self.id)
-                b2 = Bullet(self.x + 45, self.y, -1, 15, "player", self.id)
+                b1 = Bullet(self.x + 5, self.y, -1, SPEED_SHOOT_POWER, "player", self.id)
+                b2 = Bullet(self.x + 45, self.y, -1, SPEED_SHOOT_POWER, "player", self.id)
                 self.bullets.extend([b1, b2])
             else:
                 # TIRO NORMAL (Centralizado)
-                bullet = Bullet(self.x + 25, self.y, -1, 10, "player", self.id)
+                bullet = Bullet(self.x + 25, self.y, -1, SPEED_SHOOT, "player", self.id)
                 self.bullets.append(bullet)
 
             self.last_shot = now

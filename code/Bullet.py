@@ -33,9 +33,8 @@ class Bullet:
     def draw(self, window):
         window.blit(self.sprite, self.rect)
 
-    # NOVO MÉTODO: Para evitar o erro de fechar o jogo (AttributeError)
     def handle_collision(self):
-        # Aqui você pode adicionar um efeito ou apenas deixar passar
+        # Aqui  posso adicionar um efeito ou apenas deixar passar
         pass
 
     def is_off_screen(self):
