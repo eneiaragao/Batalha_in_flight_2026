@@ -61,7 +61,7 @@ class Game:
                         lista_players = self.level.mediator.players
 
                         if self.state == GameState.COOP:
-                            name = "Equipe"
+                            name = "Equipe Delta"
                         elif self.state == GameState.VS:
                             p1 = lista_players[0]
                             p2 = lista_players[1]

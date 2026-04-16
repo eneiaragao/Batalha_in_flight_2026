@@ -2,7 +2,8 @@ import os
 
 import pygame
 from Button import Button
-from Const import C_WHITE, MENU_BUTTONS_CONFIG, SCREEN_WIDTH, SCREEN_HEIGHT, C_ROYAL_BLUE
+from Const import C_WHITE, MENU_BUTTONS_CONFIG, SCREEN_WIDTH, SCREEN_HEIGHT, C_SKY_BLUEP, \
+    C_SKY_BLUEP2
 from Game_State import GameState
 
 class Menu:
@@ -44,11 +45,22 @@ class Menu:
         return GameState.MENU
 
     def draw(self):
-        # Primeiro desenha a imagem de fundo carregada no __init__
+        # 1. Desenha o fundo
         self.window.blit(self.menu_bg, (0, 0))
 
-        title = self.title_font.render("AIR COMBAT", True, C_ROYAL_BLUE )
-        self.window.blit(title, (500, 50))
+        # 2. Configurações da Sombra e Texto
+        texto_str = "BATTLE IN FLIGHT 2026"
+        posicao_x = 400
+        posicao_y = 50
+        deslocamento = 3  # Quantidade de pixels que a sombra "foge" do texto
+
+        # 3. Desenha a SOMBRA primeiro
+        shadow = self.title_font.render(texto_str, True, C_SKY_BLUEP2)
+        self.window.blit(shadow, (posicao_x + deslocamento, posicao_y + deslocamento))
+
+        # 4. Desenha o TEXTO PRINCIPAL por cima
+        title = self.title_font.render(texto_str, True, C_SKY_BLUEP)
+        self.window.blit(title, (posicao_x, posicao_y))
 
         for button in self.buttons:
             button.draw(self.window)

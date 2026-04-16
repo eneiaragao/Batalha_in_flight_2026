@@ -7,6 +7,6 @@ class PlaneConfig:
 
 #  LISTA DA ESCOLHA DE AVIÃO
 PLANES = [
-    PlaneConfig("Rápido", speed=7, fire_rate=400, asset_name="Player2"),
-    PlaneConfig("Balanceado", speed=6, fire_rate=400, asset_name="Player1"),
+    PlaneConfig("Raptor Delta", speed=7, fire_rate=400, asset_name="Player2"),
+    PlaneConfig("Falcon One", speed=6, fire_rate=400, asset_name="Player1"),
 ]

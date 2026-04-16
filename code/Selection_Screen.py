@@ -2,7 +2,8 @@ import os
 
 import pygame
 
-from Const import C_WHITE, FONT_SCORE_SIZE_DEFAULT, FONT_SCORE_SIZE_TITLE, C_BRIGHT_GREEN, SCREEN_WIDTH, C_GREEN
+from Const import C_WHITE, FONT_SCORE_SIZE_DEFAULT, FONT_SCORE_SIZE_TITLE, C_BRIGHT_GREEN, SCREEN_WIDTH, C_GREEN, \
+    C_YELLOW
 from Game_State import GameState
 from Plane_Config import PLANES
 
@@ -53,7 +54,7 @@ class SelectionScreen:
         title_rect = title.get_rect(centerx=SCREEN_WIDTH // 2, y=50)
         self.window.blit(title, title_rect)
 
-        spacing = 300
+        spacing = 500
         start_x = (SCREEN_WIDTH // 2) - (spacing // 2) - 50
         font_instr = pygame.font.SysFont("Arial", 18, bold=True)
 
@@ -71,7 +72,9 @@ class SelectionScreen:
 
             # Nome do avião
             name_text = self.font.render(plane.name, True, C_WHITE)
-            self.window.blit(name_text, (x + 10, y + 110))
+            nome_x_centralizado = x + 50 - (name_text.get_width() // 2)
+            self.window.blit(name_text, (nome_x_centralizado, y + 110))
+
 
             # --- LÓGICA DE COMANDOS CORRIGIDA ---
             if self.mode == GameState.PLAYING:
@@ -86,7 +89,7 @@ class SelectionScreen:
                     comandos = ["PLAYER 2", "L = Atirar", "W, A, S, D = Mover"]
 
             for j, linha in enumerate(comandos,):
-                cor = (255, 255, 0) if j == 0 else C_WHITE
+                cor = C_YELLOW if j == 0 else C_WHITE
                 cmd_surf = font_instr.render(linha, True, cor)
                 self.window.blit(cmd_surf, (x, y + 150 + (j * 25)))
                 # --- FORA DO LOOP (Para desenhar o aviso de iniciar uma única vez) ---

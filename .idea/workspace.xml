@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="Creating an infinite loop in phase 3 implementing DOUBLE SHOT">
+    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="Creating an infinite loop Final adjustments to the demo program.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Bullet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Const.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Const.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Level.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Player.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Plane_Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Plane_Config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/Selection_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Selection_Screen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776304028078</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Creating an infinite loop Final adjustments to the demo program.">
+      <option name="closed" value="true" />
+      <created>1776312400756</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1776312400756</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -197,6 +204,7 @@
     <MESSAGE value="Implementation of player cooperative and player competitive" />
     <MESSAGE value="&#10;Implementing explosion sounds by adjusting the Factory and Mediator classes." />
     <MESSAGE value="Creating an infinite loop in phase 3 implementing DOUBLE SHOT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating an infinite loop in phase 3 implementing DOUBLE SHOT" />
+    <MESSAGE value="Creating an infinite loop Final adjustments to the demo program." />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating an infinite loop Final adjustments to the demo program." />
   </component>
 </project>
