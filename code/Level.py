@@ -89,15 +89,23 @@ class Level:
         # 5. O MEDIADOR ATUALIZA TUDO (Movimento, Tiros e Colisões)
         self.mediator.update()
 
+        # --- NOVA LÓGICA DE POWER-UP (Verifica a cada frame) ---
+        for p in self.mediator.players:
+            # Se o score for múltiplo de 200 e ele não estiver com power-up ativo
+            # Usamos score > 0 para não ativar no início do jogo
+            if p.score > 0 and p.score % 200 == 0 and not p.power_up_active:
+                p.activate_power_up()
+                print(f"DEBUG: Power-up ativado para Player {p.id} (Score: {p.score})")
+
         # Checa progresso da fase
         self.check_level_progression()
-
     def check_level_progression(self):
         current_total = sum(p.score for p in self.mediator.players)
         puntos_necessarios = (self.level_index + 1) * POINTS_PER_LEVEL
 
         if current_total >= puntos_necessarios:
             if self.level_index < len(LEVELS) - 1:
+                # Muda de fase normalmente (Fase 1 -> 2 ou 2 -> 3)
                 self.level_index += 1
                 self.current_level = LEVELS[self.level_index]
 
@@ -109,6 +117,8 @@ class Level:
                 print(f"DEBUG: Cenário atualizado para Fase {self.level_index + 1}")
             else:
                 # Modo infinito na última fase
+                # Não altera  o self.victory para True, então o jogo nunca chama o GameState.SCORE
+                # até que as vidas (is_game_over) cheguem a zero.
                 pass
     def draw(self):
         # Desenha Fundo

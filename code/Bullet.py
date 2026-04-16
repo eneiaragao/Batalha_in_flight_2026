@@ -18,7 +18,7 @@ class Bullet:
         try:
             self.sprite = pygame.image.load(img_path).convert_alpha()
             # Ajustando o tamanho do tiro (geralmente menor que o player)
-            self.sprite = pygame.transform.scale(self.sprite, (20, 10))
+            self.sprite = pygame.transform.scale(self.sprite, (15, 10))
         except:
             self.sprite = pygame.Surface((10, 5))
             self.sprite.fill(C_WHITE)

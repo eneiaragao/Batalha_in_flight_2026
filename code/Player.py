@@ -18,8 +18,8 @@ class Player(Entity):
         # rotate(imagem, ângulo): 90 graus gira ela para olhar para CIMA
         img = pygame.transform.rotate(img, 90)
 
-        sprite = pygame.transform.scale(img, (50, 50))
-        super().__init__("player", x, y, sprite)
+        self.image = pygame.transform.scale(img, (50, 50))
+        super().__init__("player", x, y, self.image)
 
         self.id = player_id  # Salva o ID
         self.score = 0  # Cada player agora tem seu próprio score
@@ -28,7 +28,14 @@ class Player(Entity):
         self.bullets = []
         self.life = LIVE_PLAYERS #quantidade de vidas po player
         self.last_shot = 0
+        self.power_up_active = False
+        self.power_up_timer = 0
+        self.last_shot_time = 0
 
+    def activate_power_up(self):
+        self.power_up_active = True
+        # 20 segundos * 60 FPS = 1200 frames
+        self.power_up_timer = 1200
     def move(self):
         keys = pygame.key.get_pressed()
 
@@ -60,15 +67,23 @@ class Player(Entity):
 
     def shoot(self):
         now = pygame.time.get_ticks()
-        if now - self.last_shot > self.shoot_delay:
-            # O import local deve ficar aqui para evitar erro circular
-            from Bullet import Bullet
 
-            # x + 25 centraliza no bico da nave.
-            # Passamos self.id como o ÚLTIMO parâmetro para ser o 'owner_id'
-            bullet = Bullet(self.x + 25, self.y, -1, 10, "player", self.id)
+        # LOGICA DO POWER-UP: Tiros muito mais rápidos (50ms vs 300ms)
+        cooldown = 100 if self.power_up_active else self.shoot_delay
 
-            self.bullets.append(bullet)
+        if now - self.last_shot > cooldown:
+            from Bullet import Bullet  # Garanta que o arquivo Bullet.py não importe Player de volta
+
+            if self.power_up_active:
+                # TIRO DUPLO (Um em cada lado da nave)
+                b1 = Bullet(self.x + 5, self.y, -1, 15, "player", self.id)
+                b2 = Bullet(self.x + 45, self.y, -1, 15, "player", self.id)
+                self.bullets.extend([b1, b2])
+            else:
+                # TIRO NORMAL (Centralizado)
+                bullet = Bullet(self.x + 25, self.y, -1, 10, "player", self.id)
+                self.bullets.append(bullet)
+
             self.last_shot = now
 
     def update(self):
@@ -84,3 +99,16 @@ class Player(Entity):
         for bullet in self.bullets:
             bullet.update()
         self.bullets = [b for b in self.bullets if b.y > -50]
+        # Controle do Power-Up
+        if self.power_up_active:
+            self.power_up_timer -= 1
+            if self.power_up_timer <= 0:
+                self.power_up_active = False
+
+    def draw(self, window):
+        # Lógica para PISCAR: Desenha a nave apenas em frames pares
+        if self.power_up_active:
+            if (self.power_up_timer // 5) % 2 == 0:  # Pisca a cada 5 frames
+                window.blit(self.image, self.rect)
+        else:
+            window.blit(self.image, self.rect)
