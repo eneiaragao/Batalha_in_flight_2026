@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="Creating an infinite loop Final adjustments to the demo program.">
+    <list default="true" id="36f111ca-b759-432e-8fca-cbc81ed665ad" name="Changes" comment="Ajustes finais">
+      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Const.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Const.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Plane_Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Plane_Config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Selection_Screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Selection_Screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +52,8 @@
       <recent name="C:\Users\User\PycharmProjects\Projetos\Jogo_Teste" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\User\PycharmProjects\Projetos\Jogo_Teste\code" />
       <recent name="C:\Users\User\PycharmProjects\Projetos\Jogo_Teste" />
+      <recent name="C:\Users\User\PycharmProjects\Projetos\Jogo_Teste\code" />
     </key>
   </component>
   <component name="RunManager">
@@ -73,7 +70,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\User\PycharmProjects\Projetos\Jogo_Teste\code\Main.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\User\PycharmProjects\Projetos\Jogo_Teste\Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -180,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776312400756</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Ajustes finais">
+      <option name="closed" value="true" />
+      <created>1776344305008</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1776344305008</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,6 +210,7 @@
     <MESSAGE value="&#10;Implementing explosion sounds by adjusting the Factory and Mediator classes." />
     <MESSAGE value="Creating an infinite loop in phase 3 implementing DOUBLE SHOT" />
     <MESSAGE value="Creating an infinite loop Final adjustments to the demo program." />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating an infinite loop Final adjustments to the demo program." />
+    <MESSAGE value="Ajustes finais" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes finais" />
   </component>
 </project>
